@@ -434,7 +434,48 @@ img{
     justify-items: center;
     row-gap: 2rem;
 }
+.card{
+    width: 100%;
+    margin:20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--first-color-lighten);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 400ms ease;
+    border:2px solid var(--first-color);
+}
+.card:hover{
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5%);
+}
+.card .contenido{
+    padding: 15px;
+    text-align: center;
+}
+.card .contenido p{
+    line-height: 1.5;
+    color: #6a6a6a;
+}
+.card .contenido h3{
+    font-weight: var(--h3-font-size);
+    margin-bottom: 15px;
+}
+.card .contenido .link__works{
+    display: inline-block;
+    margin-top: 10px;
+    background-color: var(--first-color);
+    color:var(--first-color-lighten);
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    transition: all 400ms ease;
+}
+.card .contenido .link__works:hover{
+    background-color: var(--firts-color-dark);
+}
 .works__imagenes{
+    text-align: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     border-radius: .5rem;
