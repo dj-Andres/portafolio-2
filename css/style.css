@@ -479,6 +479,8 @@ img{
     position: relative;
     overflow: hidden;
     border-radius: .5rem;
+    width: 180px;
+    height: 100px;
 }
 .works__data{
     position: absolute;
@@ -678,6 +680,14 @@ img{
     }
     .timeline ul{
         margin: 0 0 0 auto;
+    }
+    .works__imagenes{
+        text-align: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: .5rem;
+        margin:auto;
     }
     .timeline .date::before{
         left: -20rem;
