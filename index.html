@@ -10,6 +10,8 @@
     <title>Diego Jimenez</title>
     <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/sweetalert2.css">
 </head>
 <body>
     <header class="l-header">
@@ -40,7 +42,7 @@
             <div class="home__container bd-grid">
                 <div class="home__data">
                     <div class="home__image">
-                        <img src="img/perfil.png" alt="Diego Jimenez,Ecuador">
+                        <img src="img/17621653_876756485796364_2489618583900870180_o.jpg" alt="Diego Jimenez,Ecuador">
                     </div>
                     <h1 class="home__title">Diego Jimenez   😀</h1>
                     <div class="home__social">
@@ -63,7 +65,7 @@
                     <p class="about__description">
                         Soy una persona con un alto nivel de adaptación a cualquier entorno de trabajo, aprovecho todas las herramientas proporcionadas para dar solución a todas las actividades requeridas, me gusta investigar sobre temas que desconozco y me gusta la competitividad.
                     </p>
-                    <img src="img/about.png" alt="Diego Jimenez,Ecuador"  class="about__img">
+                    <img src="img/IMG_20201210_184446.jpg" alt="Diego Jimenez,Ecuador"  class="about__img">
                 </div>
 
                 <div>
@@ -296,13 +298,12 @@
                     </p>
                     <a href="#contact" class="button button__light">Contacto</a>
                 </div>
-                <img src="img/projectmind.png" alt="Diego Jimenez,Ecuador" class="img_proyect">    
             </div>
         </section>
         
         <section class="works section" id="works">
             <span class="section-subtitle">Mi portafolio</span>
-            <h2 class="section-title">Recientes Trabajos</h2>
+            <h2 class="section-title">Trabajos Realizados</h2>
 
             <div class="works__container bg-grid">
                 <div class="card">
@@ -340,7 +341,7 @@
                         <p>
                             El proyecto WEb sobre Gestión y Ventas de Productos de una Farmacia está realizada en PHP,JS,JQuery,MySQL,HTML/CSS.
                         </p>
-                        <a href="" class="link__works"><i class="bx bx-link-alt"></i></a>
+                        <a href="https://github.com/dj-Andres/Proyect-Personal" target="__blank"  class="link__works"><i class="bx bx-link-alt"></i></a>
                     </div>
                 </div>
 
@@ -353,7 +354,7 @@
                         <p>
                             El proyecto WEb configurable para cual tipo de negocio dedicada a la  venta de Productos el sitema se desarrollo con  PHP,JS,JQuery,MySQL,HTML/CSS.
                         </p>
-                        <a href="" class="link__works"><i class="bx bx-link-alt"></i></a>
+                        <a href="https://github.com/dj-Andres/punto-venta" target="__blank" class="link__works"><i class="bx bx-link-alt"></i></a>
                     </div>
                 </div>
 
@@ -366,7 +367,7 @@
                         <p>
                             Sofware de Gestión y Cobro de Consumo de Agua Potable fue desarrollada en HTML/CSS,JS,JQueryASP.NET,MySQL.
                         </p>
-                        <a href="" class="link__works"><i class="bx bx-link-alt"></i></a>
+                        <a href="https://github.com/dj-Andres/cobranzas_agua_potable" target="__blank" class="link__works"><i class="bx bx-link-alt"></i></a>
                     </div>
                 </div>
 
@@ -379,7 +380,7 @@
                         <p>
                             Sistema entorno a Escritorio desarrollado en Visual Basic 6.0 posee Modulos de Gestion de Socios,Multas,Aportaciones.
                         </p>
-                        <a href="" class="link__works"><i class="bx bx-link-alt"></i></a>
+                        <a href="https://github.com/dj-Andres/coop-taxi" target="__blank" class="link__works"><i class="bx bx-link-alt"></i></a>
                     </div>
                 </div>
             </div>
@@ -392,8 +393,8 @@
             <div class="contact__container bg-grid">
                 <form action="" class="contact__form" id="formulario">
                     <div class="contact__inputs">
-                        <input type="text" placeholder="Nombre" class="contact__input" id="from_name" name="fron_name">
-                        <input type="email" placeholder="Email" class="contact__input" id="to_name" name="to_name">
+                        <input type="text" placeholder="Nombre" class="contact__input" id="from_name" name="from_name">        
+                        <input type="email" placeholder="Email" class="contact__input" id="to_name" name="to_name" required>
                     </div>
                     <input type="text" placeholder="Proyecto" class="contact__input">
                     <textarea  cols="0" rows="10" class="contact__input" id="message" name="message"></textarea>
@@ -433,6 +434,7 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/sweetalert2.js"></script>
     <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script>
         emailjs.init('user_X6O6ue4CEcCp3OvBQd8kw');
@@ -444,26 +446,45 @@
 
         const btn = document.getElementById('correo');
         
+        const formulario = document.getElementById('formulario');
 
-        document.getElementById('formulario')
-        .addEventListener('submit', function(event) {
+        formulario.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        btn.value = 'Enviando...';
+            let campos=true;
+            let elementos=formulario;
 
-        const serviceID = 'default_service';
-        const templateID = 'template_21dydkg';
+            for(i=0; i < elementos.length; i++){
+                if(elementos[i].value == "" || elementos[i].value == null ||  /^\s*$/.test(elementos[i].value)){
+                    campos=false;
+                }
+            }
 
-        emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-            btn.value = 'Mensaje enviado exitosamente';
-            //alert('Sent!');
-            limpiar();
-            }, (err) => {
-            btn.value = 'Send Email';
-            alert(JSON.stringify(err));
-            });
+            if(campos){
+                    btn.value = 'Enviando...';
+                    const serviceID = 'default_service';
+                    const templateID = 'template_21dydkg';
+
+                    emailjs.sendForm(serviceID, templateID, this)
+                        .then(() => {
+                          btn.value = 'Mensaje enviado exitosamente';
+                          limpiar();
+                          btn.value='Enviar Mensaje';
+                        }, (err) => {
+                            btn.value = 'Send Email';
+                            alert(JSON.stringify(err));
+                    });       
+                
+            }else{
+                Swal.fire({
+                  icon: 'error',
+                  text: 'Los campos no pueden estar vacios o en blanco!'
+                })
+            }
         });
+
+
+        
     </script>
 </body>
 </html>
